@@ -3,6 +3,7 @@ import {engine} from 'express-handlebars';
 import cors from 'cors';
 import ContenedorProductos from './classes/ContenedorProductos.js';
 import productosRouter from './routes/productos.js';
+import carritoRouter from './routes/carrito.js';
 import upload from './services/uploader.js';
 import __dirname from './utils.js';
 import {Server} from 'socket.io';
@@ -19,17 +20,19 @@ export const io = new Server(server);
 app.engine('handlebars',engine())
 app.set('views',__dirname+'/views')
 app.set('view engine','handlebars')
-
+const authorization = true;
 
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({extended:true}))
 app.use((req,res,next)=>{
     console.log(new Date().toTimeString().split(" ")[0], req.method, req.url);
+    req.auth=authorization
     next();
 })
 app.use(express.static(__dirname+'/public'));
 app.use('/api/productos',productosRouter);
+app.use("/api/carrito",carritoRouter);
 
 
 app.post('/api/uploadfile',upload.fields([

@@ -43,7 +43,7 @@ class ContenedorProductos{
             let data = await fs.promises.readFile(productosURL,'utf-8');
             let productos = JSON.parse(data);
             let producto = productos.find(v => v.id===id)
-            if(pet){
+            if(producto){
                 return {status:"success", payload:producto}
             }else{
                 return {status:"error",message:"producto no encontrado"}
