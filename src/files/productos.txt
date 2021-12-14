@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "banana",
+    "precio": "125",
+    "thumbnail": "http://localhost:8080/images/1638478719636descarga.jfif",
+    "assign": true,
+    "car": 1
+  },
+  {
+    "id": 2,
+    "title": "bananaa",
+    "precio": "125",
+    "thumbnail": "http://localhost:8080/images/1638478729638descarga.jfif",
+    "assign": true,
+    "car": 1
+  }
+]
